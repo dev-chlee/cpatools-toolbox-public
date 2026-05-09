@@ -1,0 +1,6 @@
+# land-price-query dependencies
+openpyxl>=3.1
+weasyprint>=60     # HTML → PDF 렌더링 (표지·결과지)
+
+# 외부 도구 (시스템에 별도 설치, render_screenshots.py 사용 시):
+#   Google Chrome (headless 캡처)
