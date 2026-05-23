@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "sourceSha": "06ed381ae038497f40e5ab2b6d5eb31a12a23843",
-  "generatedAt": "2026-05-23T14:54:31Z",
+  "sourceSha": "1b61a45550cde186f7247fc37f49286955c78d01",
+  "generatedAt": "2026-05-23T15:45:22Z",
   "items": [
     {
       "slug": "dsd-to-xlsx",
@@ -57,6 +57,20 @@
       "version": null,
       "hasPublishedPost": false,
       "repoUrl": "https://github.com/dev-chlee/cpatools-toolbox-public/tree/main/skills/registry-mortgage-analysis"
+    },
+    {
+      "slug": "rename-verify-2026-05-24",
+      "title": "Rename Verify (2026-05-24)",
+      "description": "cpatools-toolbox → my-skills GitHub 리포 rename 후 자동 sync 흐름 정상 작동 검증용.",
+      "category": "utility",
+      "tags": [
+        "test",
+        "rename"
+      ],
+      "stabilizedAt": "2026-05-24",
+      "version": "0.0.1",
+      "hasPublishedPost": false,
+      "repoUrl": "https://github.com/dev-chlee/cpatools-toolbox-public/tree/main/skills/rename-verify-2026-05-24"
     },
     {
       "slug": "revenue-tod",
