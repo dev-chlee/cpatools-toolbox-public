@@ -1,4 +1,0 @@
-# journal-entry-standardizer dependencies
-# 핵심 유틸(je_utils.py)은 표준 라이브러리만 사용.
-# 다음은 분개장 엑셀 입출력 시 필요.
-openpyxl>=3.1
