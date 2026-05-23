@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "sourceSha": "fd0560477d7bf3e9fe962b92272731bb28d2ae6a",
-  "generatedAt": "2026-05-23T14:42:23Z",
+  "sourceSha": "06ed381ae038497f40e5ab2b6d5eb31a12a23843",
+  "generatedAt": "2026-05-23T14:54:31Z",
   "items": [
     {
       "slug": "dsd-to-xlsx",
@@ -68,6 +68,20 @@
       "version": null,
       "hasPublishedPost": false,
       "repoUrl": "https://github.com/dev-chlee/cpatools-toolbox-public/tree/main/skills/revenue-tod"
+    },
+    {
+      "slug": "sync-test-2026-05-23",
+      "title": "Sync Test (2026-05-23)",
+      "description": "cpatools-toolbox v2 mirror 자동 sync 흐름 end-to-end 검증용 테스트 skill.",
+      "category": "utility",
+      "tags": [
+        "test",
+        "automation"
+      ],
+      "stabilizedAt": "2026-05-23",
+      "version": "0.0.1",
+      "hasPublishedPost": true,
+      "repoUrl": "https://github.com/dev-chlee/cpatools-toolbox-public/tree/main/skills/sync-test-2026-05-23"
     }
   ]
 }
