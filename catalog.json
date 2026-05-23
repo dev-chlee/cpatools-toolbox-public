@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "sourceSha": "1b61a45550cde186f7247fc37f49286955c78d01",
-  "generatedAt": "2026-05-23T15:45:22Z",
+  "sourceSha": "fa64b6a1bba73e437579e03a1ee36999d342f2a7",
+  "generatedAt": "2026-05-23T15:52:06Z",
   "items": [
     {
       "slug": "dsd-to-xlsx",
@@ -59,20 +59,6 @@
       "repoUrl": "https://github.com/dev-chlee/cpatools-toolbox-public/tree/main/skills/registry-mortgage-analysis"
     },
     {
-      "slug": "rename-verify-2026-05-24",
-      "title": "Rename Verify (2026-05-24)",
-      "description": "cpatools-toolbox → my-skills GitHub 리포 rename 후 자동 sync 흐름 정상 작동 검증용.",
-      "category": "utility",
-      "tags": [
-        "test",
-        "rename"
-      ],
-      "stabilizedAt": "2026-05-24",
-      "version": "0.0.1",
-      "hasPublishedPost": false,
-      "repoUrl": "https://github.com/dev-chlee/cpatools-toolbox-public/tree/main/skills/rename-verify-2026-05-24"
-    },
-    {
       "slug": "revenue-tod",
       "title": "매출테스트 자동화",
       "description": "매출 Test of Details (TOD) 감사 절차를 자동 수행하는 스킬.",
@@ -82,20 +68,6 @@
       "version": null,
       "hasPublishedPost": false,
       "repoUrl": "https://github.com/dev-chlee/cpatools-toolbox-public/tree/main/skills/revenue-tod"
-    },
-    {
-      "slug": "sync-test-2026-05-23",
-      "title": "Sync Test (2026-05-23)",
-      "description": "cpatools-toolbox v2 mirror 자동 sync 흐름 end-to-end 검증용 테스트 skill.",
-      "category": "utility",
-      "tags": [
-        "test",
-        "automation"
-      ],
-      "stabilizedAt": "2026-05-23",
-      "version": "0.0.1",
-      "hasPublishedPost": true,
-      "repoUrl": "https://github.com/dev-chlee/cpatools-toolbox-public/tree/main/skills/sync-test-2026-05-23"
     }
   ]
 }
