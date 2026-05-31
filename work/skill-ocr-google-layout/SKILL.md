@@ -16,12 +16,12 @@ description: GCP Document AI Layout Parser 기반 PDF OCR 스킬. `.ocr2` 또는
 ## 운영 경로 정책
 
 ```bash
-WORK_ROOT=/opt/data/_external/gd/hermes-mount/work
+WORK_ROOT=/path/to/work
 OCR_BASE_DIR=$WORK_ROOT/02_ocr
 OCR_INBOX_DIR=$WORK_ROOT/02_ocr/_inbox
 OCR_OUTPUT_ROOT=$WORK_ROOT/02_ocr
-AGENT_CREDENTIALS_DIR=/opt/data/credentials
-MY_SKILLS_VENV_ROOT=/opt/data/venvs/my-skills
+AGENT_CREDENTIALS_DIR=/path/to/credentials
+MY_SKILLS_VENV_ROOT=/path/to/venvs/my-skills
 GOOGLE_APPLICATION_CREDENTIALS=$AGENT_CREDENTIALS_DIR/google_docai.json
 ```
 
@@ -33,7 +33,7 @@ D:_Dev_skills\.venvs\ocr-google-layout
 
 ## 1회 초기화
 ```bash
-cd /opt/data/skills/_my-skills/work/skill-ocr-google-layout
+cd <skill-dir>
 python3 scripts/setup_venv.py
 cp .env.example .env
 ```
@@ -47,14 +47,14 @@ cp .env.example .env
 
 ### `.ocr2` / `.ocr-google-layout`
 ```bash
-cd /opt/data/skills/_my-skills/work/skill-ocr-google-layout
-/opt/data/venvs/my-skills/ocr-google-layout/bin/python scripts/run_inbox_batch.py   --inbox "$OCR_INBOX_DIR"   --output-root "$OCR_OUTPUT_ROOT"
+cd <skill-dir>
+/path/to/venvs/my-skills/ocr-google-layout/bin/python scripts/run_inbox_batch.py   --inbox "$OCR_INBOX_DIR"   --output-root "$OCR_OUTPUT_ROOT"
 ```
 
 환경변수 기본값을 사용할 수도 있다.
 
 ```bash
-WORK_ROOT=/opt/data/_external/gd/hermes-mount/work AGENT_CREDENTIALS_DIR=/opt/data/credentials GOOGLE_APPLICATION_CREDENTIALS=/opt/data/credentials/google_docai.json /opt/data/venvs/my-skills/ocr-google-layout/bin/python scripts/run_inbox_batch.py
+WORK_ROOT=/path/to/work AGENT_CREDENTIALS_DIR=/path/to/credentials GOOGLE_APPLICATION_CREDENTIALS=/path/to/credentials/google_docai.json /path/to/venvs/my-skills/ocr-google-layout/bin/python scripts/run_inbox_batch.py
 ```
 
 ## 실동작 기준 (OCR 공통 정책)
@@ -68,13 +68,13 @@ WORK_ROOT=/opt/data/_external/gd/hermes-mount/work AGENT_CREDENTIALS_DIR=/opt/da
 
 ## 단건/폴더 직접 실행
 ```bash
-/opt/data/venvs/my-skills/ocr-google-layout/bin/python scripts/run_ocr_google.py --file "<pdf1>" "<pdf2>" --output "<output_dir>"
-/opt/data/venvs/my-skills/ocr-google-layout/bin/python scripts/run_ocr_google.py --dir "<folder>" --output "<output_dir>"
-/opt/data/venvs/my-skills/ocr-google-layout/bin/python scripts/run_ocr_google.py --gcs gs://<bucket>/<path>
+/path/to/venvs/my-skills/ocr-google-layout/bin/python scripts/run_ocr_google.py --file "<pdf1>" "<pdf2>" --output "<output_dir>"
+/path/to/venvs/my-skills/ocr-google-layout/bin/python scripts/run_ocr_google.py --dir "<folder>" --output "<output_dir>"
+/path/to/venvs/my-skills/ocr-google-layout/bin/python scripts/run_ocr_google.py --gcs gs://<bucket>/<path>
 ```
 
 ## 의존성 / venv 정책
-- Hermes/Docker 실행용 venv는 스킬 소스 트리 밖에 둔다: `/opt/data/venvs/my-skills/ocr-google-layout`
+- Hermes/Docker 실행용 venv는 스킬 소스 트리 밖에 둔다: `/path/to/venvs/my-skills/ocr-google-layout`
 - Windows 직접 실행용 venv는 별도 생성한다: `D:_Dev_skills\.venvs\ocr-google-layout`
 - `skill-*/.venv` 또는 `.venv-openclaw`를 만들거나 마이그레이션하지 않는다.
 - `scripts/setup_venv.py`는 기본적으로 외부 venv root를 사용한다.
