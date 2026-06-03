@@ -26,7 +26,7 @@ from pathlib import Path
 
 SKILL_ROOT = Path(__file__).resolve().parents[1]
 RUNNER = SKILL_ROOT / "scripts" / "run_ocr_google.py"
-DEFAULT_WORK_ROOT = "/opt/data/work"
+DEFAULT_WORK_ROOT = "/opt/data/_external/gd/hermes-mount/work"
 
 
 def _work_root() -> str:

@@ -41,7 +41,7 @@ cp .env.example .env
 - 서비스 계정에 버킷 읽기/쓰기 권한 확인
 - 일시 오류는 1회 재시도
 
-## 4) `.ocr2` 배치에서 일부 파일 실패
+## 4) `.ocr` 배치에서 일부 파일 실패
 
 ### 증상
 - `DONE total=N success=M failed=K`

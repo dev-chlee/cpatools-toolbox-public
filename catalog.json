@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "sourceSha": "7ef904c7c12d82b86cd90273dd9ff3b19a0c2a33",
-  "generatedAt": "2026-06-03T09:19:39Z",
+  "sourceSha": "37943263e47678ed08b382db1c78f1d73146ff40",
+  "generatedAt": "2026-06-03T11:42:46Z",
   "items": [
     {
       "slug": "skill-ocr-google-layout",
       "categoryDir": "work",
       "subpath": "skill-ocr-google-layout",
       "title": "Google OCR (Document AI 레이아웃 파서)",
-      "description": "GCP Document AI Layout Parser 기반 PDF OCR 스킬. `.ocr2` 또는 `.ocr-google-layout` 커맨드로 `$OCR_INBOX_DIR`의 PDF를 배치 처리하고 `$OCR_OUTPUT_ROOT`에 결과를 저장할 때 사용한다.",
+      "description": "GCP Document AI Layout Parser 기반 PDF OCR 스킬. `.ocr` 커맨드 또는 자연어 OCR 요청으로 `$OCR_INBOX_DIR`의 PDF를 배치 처리하고 `$OCR_OUTPUT_ROOT`에 결과를 저장할 때 사용한다.",
       "category": "utility",
       "tags": [
         "OCR",
