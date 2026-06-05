@@ -26,7 +26,8 @@ from pathlib import Path
 
 SKILL_ROOT = Path(__file__).resolve().parents[1]
 RUNNER = SKILL_ROOT / "scripts" / "run_ocr_google.py"
-DEFAULT_WORK_ROOT = "/opt/data/_external/gd/hermes-mount/work"
+# 산출물/입력 기본: 호출자 CWD 기준 ./inbox·./output (트리 밖은 env 로 지정).
+DEFAULT_WORK_ROOT = "."
 
 
 def _work_root() -> str:
@@ -34,18 +35,17 @@ def _work_root() -> str:
 
 
 def _default_inbox() -> str:
-    return os.getenv("OCR_INBOX_DIR") or os.path.join(_work_root(), "02_ocr", "_inbox")
+    return os.getenv("OCR_INBOX_DIR") or os.path.join(_work_root(), "inbox")
 
 
 def _default_output_root() -> str:
-    return os.getenv("OCR_OUTPUT_ROOT") or os.path.join(_work_root(), "02_ocr")
+    return os.getenv("OCR_OUTPUT_ROOT") or os.path.join(_work_root(), "output")
 
 
 def _apply_env_defaults(inbox_dir: str, output_root: str) -> None:
     os.environ.setdefault("WORK_ROOT", DEFAULT_WORK_ROOT)
     os.environ.setdefault("OCR_INBOX_DIR", inbox_dir)
     os.environ.setdefault("OCR_OUTPUT_ROOT", output_root)
-    os.environ.setdefault("AGENT_CREDENTIALS_DIR", "/opt/data/credentials")
 
 
 def _safe_name(name: str, max_len: int = 80) -> str:
@@ -213,12 +213,12 @@ def main() -> None:
     parser.add_argument(
         "--inbox",
         default=_default_inbox(),
-        help="Inbox root (default: OCR_INBOX_DIR or WORK_ROOT/02_ocr/_inbox)",
+        help="Inbox root (default: OCR_INBOX_DIR or ./inbox)",
     )
     parser.add_argument(
         "--output-root",
         default=_default_output_root(),
-        help="Output root for timestamped batch folders (default: OCR_OUTPUT_ROOT or WORK_ROOT/02_ocr)",
+        help="Output root for timestamped batch folders (default: OCR_OUTPUT_ROOT or ./output)",
     )
     parser.add_argument("--format", choices=["html", "md", "both"], default="both")
     parser.add_argument("--embed-images", action="store_true")

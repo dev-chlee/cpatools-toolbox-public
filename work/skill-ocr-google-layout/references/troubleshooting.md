@@ -23,7 +23,7 @@ python3 scripts/setup_venv.py --recreate
 ### 조치
 ```bash
 cd <skills-root>/skill-ocr-google-layout
-cp .env.example .env
+# SKILL.md 의 `## 설정` .env 예시 블록을 복사해 .env 생성 (또는 아래 값을 셸 env로 export)
 ```
 필수값:
 - `GCP_PROJECT_ID`
@@ -41,7 +41,7 @@ cp .env.example .env
 - 서비스 계정에 버킷 읽기/쓰기 권한 확인
 - 일시 오류는 1회 재시도
 
-## 4) `.ocr` 배치에서 일부 파일 실패
+## 4) 배치에서 일부 파일 실패
 
 ### 증상
 - `DONE total=N success=M failed=K`

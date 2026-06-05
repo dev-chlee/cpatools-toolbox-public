@@ -51,21 +51,15 @@ def _validate_inputs(args: argparse.Namespace, parser: argparse.ArgumentParser) 
 
 
 def _runtime_command() -> list[str]:
-    # If this wrapper is already running inside the intended environment,
-    # keep using sys.executable to avoid recursive process chains.
-    venv_root = Path(os.environ.get("MY_SKILLS_VENV_ROOT", "/opt/data/venvs/my-skills"))
-    external_python = venv_root / "ocr-google-layout" / "bin" / "python"
-    if external_python.exists() and Path(sys.executable).resolve() != external_python.resolve():
-        return [str(external_python), "-m", "src.main"]
-
+    # Prefer uv runtime from pyproject; fall back to a skill-local .venv,
+    # else the current interpreter.
     if shutil.which("uv") and (SKILL_ROOT / "pyproject.toml").exists():
         return ["uv", "run", "python", "-m", "src.main"]
 
-    # Compatibility only: source-tree venvs are not the preferred policy.
-    for venv_name in (".venv",):
-        venv_python = SKILL_ROOT / venv_name / "bin" / "python"
-        if venv_python.exists():
-            return [str(venv_python), "-m", "src.main"]
+    # OS-aware skill-local venv (Windows = Scripts/python.exe, else bin/python).
+    venv_python = SKILL_ROOT / ".venv" / ("Scripts/python.exe" if os.name == "nt" else "bin/python")
+    if venv_python.exists():
+        return [str(venv_python), "-m", "src.main"]
 
     return [sys.executable, "-m", "src.main"]
 
@@ -105,7 +99,7 @@ def main() -> int:
         parser.error(f"Invalid skill layout. src/main.py not found: {SKILL_ROOT}")
 
     if not (SKILL_ROOT / ".env").exists():
-        print("[WARN] .env not found in skill root. Copy .env.example and set GCP values.", file=sys.stderr)
+        print("[WARN] .env not found in skill root. Set GCP env vars or create .env (see SKILL.md ## 설정).", file=sys.stderr)
 
     cmd = _runtime_command() + _forwarded_cli_args(args)
 

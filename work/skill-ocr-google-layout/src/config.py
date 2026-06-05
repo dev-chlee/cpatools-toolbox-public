@@ -49,20 +49,10 @@ class DocumentAIConfig:
         if env_path:
             load_dotenv(env_path)
         else:
-            # Load a local/repo .env if present, then fill missing values from the
-            # Hermes runtime env file. Existing process or local .env values win.
             load_dotenv()
-            load_dotenv("/opt/data/.env", override=False)
 
-        # Resolve service account key path. If not explicitly set, use CH's
-        # standard credential root so direct runner invocations work after the
-        # Docker-internal HOME migration.
+        # Resolve service account key path
         credentials_path = os.environ.get("GOOGLE_APPLICATION_CREDENTIALS")
-        if not credentials_path:
-            agent_credentials_dir = os.environ.get("AGENT_CREDENTIALS_DIR", "/opt/data/credentials")
-            candidate = Path(agent_credentials_dir) / "google_docai.json"
-            if candidate.exists():
-                credentials_path = str(candidate)
         if credentials_path:
             resolved = Path(credentials_path).resolve()
             os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = str(resolved)
@@ -103,7 +93,7 @@ class DocumentAIConfig:
         if missing:
             raise ValueError(
                 f"Required environment variable(s) not set: {', '.join(missing)}. "
-                f"See .env.example for configuration details."
+                f"See SKILL.md ## 설정 for configuration details."
             )
 
         return cls(

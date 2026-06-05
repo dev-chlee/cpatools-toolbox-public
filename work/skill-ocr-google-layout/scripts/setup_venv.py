@@ -2,11 +2,9 @@
 """스킬 런타임 venv 준비 (전 스킬 공통 템플릿, OS-aware).
 
 정책:
-- venv 는 소스 트리 밖에 둔다: ``$MY_SKILLS_VENV_ROOT/<skill>``
-  기본값: Windows = ``D:/00_Infra/venvs/my-skills`` · 그 외(WSL/Linux) = ``/opt/data/venvs/my-skills``
-  (``<skill>`` 는 폴더명에서 ``skill-`` 접두사를 뗀 이름)
+- venv 위치는 각 사용자가 결정한다 (스킬은 강제하지 않음).
+  기본값: 스킬 폴더 내 ``.venv``. 다른 위치는 ``--venv <경로>`` 로 지정.
 - 설치 우선순위: ``requirements.lock`` > ``pyproject.toml`` (-e) > ``requirements.txt``
-- 소스 트리 내부 ``.venv`` 는 호환용일 뿐 기본 생성하지 않는다.
 
 사용:
     python scripts/setup_venv.py            # 외부 venv 생성 + 의존성 설치
@@ -23,13 +21,9 @@ import sys
 from pathlib import Path
 
 
-def _venv_root() -> Path:
-    env = os.environ.get("MY_SKILLS_VENV_ROOT")
-    if env:
-        return Path(env)
-    if os.name == "nt":
-        return Path("D:/00_Infra/venvs/my-skills")
-    return Path("/opt/data/venvs/my-skills")
+def _default_venv_dir(skill_root: Path) -> Path:
+    # venv 위치는 사용자 책임. 기본은 스킬-로컬 .venv; 다른 위치는 --venv 로 지정.
+    return skill_root / ".venv"
 
 
 def _python_in(venv_dir: Path) -> Path:
@@ -44,13 +38,10 @@ def _run(cmd: list[str], cwd: Path) -> None:
 
 def main() -> int:
     skill_root = Path(__file__).resolve().parents[1]
-    skill_name = skill_root.name
-    if skill_name.startswith("skill-"):
-        skill_name = skill_name[len("skill-"):]
 
     ap = argparse.ArgumentParser(description=f"Setup runtime venv for {skill_root.name}")
-    ap.add_argument("--venv", default=str(_venv_root() / skill_name),
-                    help="venv 디렉토리 경로")
+    ap.add_argument("--venv", default=str(_default_venv_dir(skill_root)),
+                    help="venv 디렉토리 경로 (기본: 스킬 폴더 .venv)")
     ap.add_argument("--recreate", action="store_true", help="삭제 후 재생성")
     args = ap.parse_args()
     venv_dir = Path(args.venv).expanduser()
