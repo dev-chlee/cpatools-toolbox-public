@@ -7,10 +7,11 @@ Claude Skills · 회계 실무 자동화 · 일상 도구
 자매 사이트: [cpatools.co.kr](https://www.cpatools.co.kr)
 
 
-## `work/` (1 skills)
+## `work/` (2 skills)
 
 | Skill | 설명 |
 | --- | --- |
+| [`skill-land-price-query`](work/skill-land-price-query/) 공시지가 조회 | 부동산공시가격알리미(realtyprice.kr)에서 개별공시지가를 조회하고, 조회 결과 스크린샷(PNG)과 감사 워크페이퍼(엑셀)를 자동 생성하는 스킬. |
 | [`skill-ocr-google-layout`](work/skill-ocr-google-layout/) Google OCR (Document AI 레이아웃 파서) | GCP Document AI Layout Parser 기반 PDF OCR. inbox 폴더의 PDF를 배치 처리해 레이아웃·표 구조를 보존한 HTML·Markdown으로 변환한다. PDF OCR·문서 레이아웃 인식·표 인식·스캔 문서 텍스트 추출이 필요할 때 사용한다. |
 
 ## 기여

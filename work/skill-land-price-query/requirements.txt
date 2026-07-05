@@ -1,0 +1,8 @@
+# land-price-query dependencies (Windows/Linux/macOS 공통, 순수 pip)
+openpyxl>=3.1     # 감사 워크페이퍼(xlsx)
+pillow>=10.0      # 엑셀 임베드 이미지 비율 계산
+playwright>=1.40  # realtyprice 실제 웹페이지 조회결과 스크린샷 (headless Chromium)
+
+# 조회 데이터는 표준 라이브러리(urllib)만 사용 — API 키/드라이버 없음.
+# Chromium 은 pip 설치 후 1회 별도 설치 필요:
+#   python -m playwright install chromium

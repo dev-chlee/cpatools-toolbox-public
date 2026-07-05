@@ -1,8 +1,26 @@
 {
   "schemaVersion": 1,
-  "sourceSha": "cfd789be82527b28525daac0ff0053609dbf13c4",
-  "generatedAt": "2026-06-05T12:37:15Z",
+  "sourceSha": "b8f27559d47b97c372c107136f26e217ebb94509",
+  "generatedAt": "2026-07-05T15:39:21Z",
   "items": [
+    {
+      "slug": "skill-land-price-query",
+      "categoryDir": "work",
+      "subpath": "skill-land-price-query",
+      "title": "공시지가 조회",
+      "description": "부동산공시가격알리미(realtyprice.kr)에서 개별공시지가를 조회하고, 조회 결과 스크린샷(PNG)과 감사 워크페이퍼(엑셀)를 자동 생성하는 스킬.",
+      "category": "audit",
+      "tags": [
+        "감사",
+        "공시지가",
+        "부동산",
+        "토지"
+      ],
+      "stabilizedAt": null,
+      "version": "0.2.0",
+      "hasPublishedPost": false,
+      "repoUrl": "https://github.com/dev-chlee/cpatools-toolbox-public/tree/main/work/skill-land-price-query"
+    },
     {
       "slug": "skill-ocr-google-layout",
       "categoryDir": "work",
