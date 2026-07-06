@@ -1,4 +1,4 @@
-# OCR2 Troubleshooting
+# ocr-google-layout 트러블슈팅
 
 ## 1) 환경 준비 실패
 
@@ -9,8 +9,8 @@
 ### 조치
 1. 우선 실행:
 ```bash
-cd <skills-root>/skill-ocr-google-layout
-python3 scripts/setup_venv.py --recreate
+cd <skill-dir>
+python scripts/setup_venv.py --recreate
 ```
 2. `uv` 미설치면 fallback venv를 사용합니다.
 3. 계속 실패하면 오류 마지막 30줄을 첨부해 원인(네트워크/권한/패키지)을 분리합니다.
@@ -18,17 +18,20 @@ python3 scripts/setup_venv.py --recreate
 ## 2) `.env` 누락/필수값 누락
 
 ### 증상
-- `Required environment variable(s) not set: ...`
+- `필수 환경변수가 설정되지 않았습니다: ...`
+- `GOOGLE_APPLICATION_CREDENTIALS 경로에 파일이 없습니다: ...` (서비스계정 키 경로 오류)
 
 ### 조치
 ```bash
-cd <skills-root>/skill-ocr-google-layout
+cd <skill-dir>
 # SKILL.md 의 `## 설정` .env 예시 블록을 복사해 .env 생성 (또는 아래 값을 셸 env로 export)
 ```
 필수값:
 - `GCP_PROJECT_ID`
 - `DOCUMENTAI_PROCESSOR_ID`
-- `GOOGLE_APPLICATION_CREDENTIALS`
+- `GOOGLE_APPLICATION_CREDENTIALS` (서비스계정 JSON **파일 경로** — 값/내용 아님)
+
+최초 GCP 설정 자체가 안 되어 있으면 `references/gcp-onboarding.md` (AI 실행형)를 따른다.
 
 ## 3) GCS/대용량 처리 실패
 
