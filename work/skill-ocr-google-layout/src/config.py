@@ -51,10 +51,17 @@ class DocumentAIConfig:
         else:
             load_dotenv()
 
-        # Resolve service account key path
+        # Resolve + validate service account key path.
+        # (GCP DefaultCredentialsError 가 첫 API 호출에서야 터지는 것을 방지 — 설정 시점에 검증)
         credentials_path = os.environ.get("GOOGLE_APPLICATION_CREDENTIALS")
         if credentials_path:
             resolved = Path(credentials_path).resolve()
+            if not resolved.is_file():
+                raise ValueError(
+                    f"GOOGLE_APPLICATION_CREDENTIALS 경로에 파일이 없습니다: {resolved}\n"
+                    f"  서비스 계정 JSON 키 파일의 실제 경로를 .env 에 지정하세요 "
+                    f"(값/내용이 아니라 경로). 최초 설정은 references/gcp-onboarding.md 참고."
+                )
             os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = str(resolved)
 
         def _bool(key: str, default: str = "true") -> bool:
@@ -90,10 +97,13 @@ class DocumentAIConfig:
             missing.append("GCP_PROJECT_ID")
         if not processor_id:
             missing.append("DOCUMENTAI_PROCESSOR_ID")
+        if not credentials_path:
+            missing.append("GOOGLE_APPLICATION_CREDENTIALS")
         if missing:
             raise ValueError(
-                f"Required environment variable(s) not set: {', '.join(missing)}. "
-                f"See SKILL.md ## 설정 for configuration details."
+                f"필수 환경변수가 설정되지 않았습니다: {', '.join(missing)}\n"
+                f"  .env 파일(또는 셸 환경변수)에 값을 채우세요. "
+                f"설정 표는 SKILL.md ## 설정, 최초 GCP 설정은 references/gcp-onboarding.md 참고."
             )
 
         return cls(

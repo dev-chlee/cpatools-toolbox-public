@@ -153,8 +153,13 @@ def _run_single_local(config, args, pdf_path: str, logger, output_dir: str | Non
     with open(file_path, "rb") as f:
         pdf_bytes = f.read()
 
-    with fitz.open(stream=pdf_bytes, filetype="pdf") as pdf_doc:
-        page_count = len(pdf_doc)
+    try:
+        with fitz.open(stream=pdf_bytes, filetype="pdf") as pdf_doc:
+            page_count = len(pdf_doc)
+    except Exception as e:
+        raise ValueError(
+            f"PDF 를 열 수 없습니다(손상되었거나 PDF 형식이 아님): {file_path.name} — {e}"
+        ) from e
 
     logger.info(f"Processing: {file_path.name} ({page_count} pages)")
 

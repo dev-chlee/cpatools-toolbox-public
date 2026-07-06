@@ -1,5 +1,5 @@
 [project]
-name = "gcs-api-ocr"
+name = "ocr-google-layout"
 version = "0.1.0"
 description = "PDF OCR parser powered by GCP Document AI Layout Parser"
 readme = "README.md"
@@ -14,7 +14,7 @@ dependencies = [
 ]
 
 [project.urls]
-Repository = "https://github.com/dev-chlee/gcs-api-ocr"
+Homepage = "https://www.cpatools.co.kr"
 
 [project.scripts]
-gcs-ocr = "src.main:main"
+ocr-google-layout = "src.main:main"
