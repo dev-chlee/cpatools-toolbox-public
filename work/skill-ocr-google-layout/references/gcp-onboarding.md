@@ -9,6 +9,11 @@
 ## AI 실행 원칙
 - **각 단계마다**: ① 무엇을 하는지 1줄 설명 → ② 명령 실행 → ③ 출력에서 필요한 값(프로젝트ID·프로세서ID
   등)을 추출·기록 → ④ 실패 시 원인과 다음 행동을 한국어로 안내.
+- **셸**: 아래 명령은 **bash 기준**이다(Windows 는 **Git Bash** 사용). AI 는 Bash 툴로 실행한다.
+  PowerShell 만 있으면 `$(cmd)` 서브셸은 그대로 되지만 `mkdir -p X` 는 `New-Item -ItemType Directory -Force X`
+  로 바꾼다.
+- **파이썬 실행**: 시스템 `python` 이 깨진 머신이 있으므로, 설치(`setup_venv.py`) 후에는 **스킬-로컬 venv
+  파이썬**으로 실행한다 — Windows `\.venv\Scripts\python.exe`, 그 외 `.venv/bin/python`(또는 `uv run python`).
 - **대화형/브라우저 명령**(`gcloud auth login`, gcloud 설치)은 AI 가 직접 못 하므로, 사용자에게
   **`! <명령>`** 로 실행하도록 요청하고 결과를 받는다.
 - **비용 주의**: Document AI Layout Parser 는 **유료**(대략 문서당 과금, 프리티어 크레딧 소진 후 청구).
@@ -148,15 +153,20 @@ GCP_LOCATION=us
 
 ```bash
 cd <skill-dir>
-python scripts/setup_venv.py            # .venv 생성 + 의존성 설치
+python scripts/setup_venv.py            # .venv 생성 + 의존성 설치 (부트스트랩만 시스템 python)
+
+# 이후는 방금 만든 venv 파이썬으로 실행 (Windows). 그 외 OS 는 .venv/bin/python
+PY='.venv/Scripts/python.exe'           # (없으면 .venv/bin/python)
 
 # 설정 검증만 먼저(자격증명 경로·필수값) — 에러 나면 해당 값 교정
-python -c "import sys; sys.path.insert(0,'.'); from src.config import DocumentAIConfig; DocumentAIConfig.from_env(); print('[OK] 설정 로드 성공')"
+"$PY" -c "import sys; sys.path.insert(0,'.'); from src.config import DocumentAIConfig; DocumentAIConfig.from_env(); print('[OK] 설정 로드 성공')"
 
 # 실제 1건 테스트: inbox 에 PDF 1개 넣고
-python scripts/run_inbox_batch.py
+"$PY" scripts/run_inbox_batch.py
 # 기대: DONE total=1 success=1 ... / output 폴더에 *.html, *.md 생성
 ```
+> `run_ocr_google.py`/`run_inbox_batch.py` 는 내부적으로 uv 또는 `.venv` 를 우선 사용하므로, 시스템
+> `python` 으로 실행해도 되지만(스크립트가 런타임을 재선택), 위처럼 venv 파이썬을 직접 쓰면 가장 확실하다.
 
 - `필수 환경변수가 설정되지 않았습니다: ...` → 해당 키를 `.env` 에 채운다.
 - `GOOGLE_APPLICATION_CREDENTIALS 경로에 파일이 없습니다` → 4-4 키 경로 확인.

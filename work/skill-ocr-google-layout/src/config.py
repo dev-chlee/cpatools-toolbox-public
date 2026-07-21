@@ -51,18 +51,7 @@ class DocumentAIConfig:
         else:
             load_dotenv()
 
-        # Resolve + validate service account key path.
-        # (GCP DefaultCredentialsError 가 첫 API 호출에서야 터지는 것을 방지 — 설정 시점에 검증)
         credentials_path = os.environ.get("GOOGLE_APPLICATION_CREDENTIALS")
-        if credentials_path:
-            resolved = Path(credentials_path).resolve()
-            if not resolved.is_file():
-                raise ValueError(
-                    f"GOOGLE_APPLICATION_CREDENTIALS 경로에 파일이 없습니다: {resolved}\n"
-                    f"  서비스 계정 JSON 키 파일의 실제 경로를 .env 에 지정하세요 "
-                    f"(값/내용이 아니라 경로). 최초 설정은 references/gcp-onboarding.md 참고."
-                )
-            os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = str(resolved)
 
         def _bool(key: str, default: str = "true") -> bool:
             return os.environ.get(key, default).lower() == "true"
@@ -105,6 +94,17 @@ class DocumentAIConfig:
                 f"  .env 파일(또는 셸 환경변수)에 값을 채우세요. "
                 f"설정 표는 SKILL.md ## 설정, 최초 GCP 설정은 references/gcp-onboarding.md 참고."
             )
+
+        # 필수값이 모두 있을 때만 자격증명 파일 실존을 검증한다(첫 API 호출에서야 터지는
+        # DefaultCredentialsError 방지). 누락 검사보다 뒤에 둬 셋 다 비면 누락 목록이 먼저 보인다.
+        resolved = Path(credentials_path).resolve()
+        if not resolved.is_file():
+            raise ValueError(
+                f"GOOGLE_APPLICATION_CREDENTIALS 경로에 파일이 없습니다: {resolved}\n"
+                f"  서비스 계정 JSON 키 파일의 실제 경로를 .env 에 지정하세요 "
+                f"(값/내용이 아니라 경로). 최초 설정은 references/gcp-onboarding.md 참고."
+            )
+        os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = str(resolved)
 
         return cls(
             project_id=project_id,
