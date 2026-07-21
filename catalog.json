@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "sourceSha": "d977038fa11eac6fc9bb6ee09db88b5de51517a4",
-  "generatedAt": "2026-07-21T05:26:08Z",
+  "sourceSha": "d62fb894c8ad6994d2446f4e83abe2af740f8596",
+  "generatedAt": "2026-07-21T05:43:32Z",
   "items": [
     {
       "slug": "skill-land-price-query",
@@ -25,7 +25,7 @@
       "slug": "skill-ocr-google-layout",
       "categoryDir": "work",
       "subpath": "skill-ocr-google-layout",
-      "title": "Google OCR (Document AI 레이아웃 파서)",
+      "title": "표·레이아웃 보존 PDF OCR",
       "description": "GCP Document AI Layout Parser 기반 PDF OCR. inbox 폴더의 PDF를 배치 처리해 레이아웃·표 구조를 보존한 HTML·Markdown으로 변환한다. PDF OCR·문서 레이아웃 인식·표 인식·스캔 문서 텍스트 추출이 필요할 때 사용한다.",
       "category": "utility",
       "tags": [

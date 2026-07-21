@@ -1,6 +1,6 @@
 ---
 name: ocr-google-layout
-title: Google OCR (Document AI 레이아웃 파서)
+title: 표·레이아웃 보존 PDF OCR
 category: utility
 tags: [OCR, PDF, Document AI]
 description: GCP Document AI Layout Parser 기반 PDF OCR. inbox 폴더의 PDF를 배치 처리해 레이아웃·표 구조를 보존한 HTML·Markdown으로 변환한다. PDF OCR·문서 레이아웃 인식·표 인식·스캔 문서 텍스트 추출이 필요할 때 사용한다.
