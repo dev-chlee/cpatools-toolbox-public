@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "sourceSha": "e87bf1940faebb594039caa2436cee754e65114c",
+  "generatedAt": "2026-09-26T06:06:53Z",
+  "items": [
+    {
+      "slug": "skill-land-price-query",
+      "categoryDir": "work",
+      "subpath": "skill-land-price-query",
+      "title": "공시지가 조회",
+      "description": "부동산공시가격알리미(realtyprice.kr)에서 개별공시지가를 조회하고 감사 워크페이퍼(엑셀)를 생성하며, 필요하면 실제 조회 화면 스크린샷(PNG)을 첨부하는 스킬.",
+      "category": "audit",
+      "tags": [
+        "감사",
+        "공시지가",
+        "부동산",
+        "토지"
+      ],
+      "stabilizedAt": null,
+      "version": "0.4.2",
+      "hasPublishedPost": false,
+      "repoUrl": "https://github.com/dev-chlee/cpatools-toolbox-public/tree/main/work/skill-land-price-query"
+    },
+    {
+      "slug": "skill-ocr-google-layout",
+      "categoryDir": "work",
+      "subpath": "skill-ocr-google-layout",
+      "title": "표·레이아웃 보존 PDF OCR",
+      "description": "GCP Document AI Layout Parser 기반 PDF OCR. inbox 폴더의 PDF를 배치 처리해 레이아웃·표 구조를 보존한 HTML·Markdown으로 변환한다. PDF OCR·문서 레이아웃 인식·표 인식·스캔 문서 텍스트 추출이 필요할 때 사용한다. 등기부 OCR은 이미지에서 취소선 존재 여부를 먼저 확인하고, 존재하거나 불확실하면 상세 범위 판독을, 없다고 확인되면 텍스트 분석을 진행한다. 근저당 합계·공동담보 분석 자체는 이 스킬의 범위가 아니다.",
+      "category": "utility",
+      "tags": [
+        "OCR",
+        "PDF",
+        "Document AI"
+      ],
+      "stabilizedAt": null,
+      "version": "0.4.0",
+      "hasPublishedPost": false,
+      "repoUrl": "https://github.com/dev-chlee/cpatools-toolbox-public/tree/main/work/skill-ocr-google-layout"
+    },
+    {
+      "slug": "skill-registry-mortgage-analysis",
+      "categoryDir": "work",
+      "subpath": "skill-registry-mortgage-analysis",
+      "title": "부동산등기부등본 분석",
+      "description": "부동산등기부등본 PDF의 모든 페이지를 이미지로 확인하고, 취소 범위를 반영한 현행 소유자·근저당·압류와 공동담보 중복 제거 금액을 엑셀 감사 조서로 만든다.",
+      "category": "audit",
+      "tags": [
+        "감사",
+        "부동산",
+        "근저당",
+        "담보",
+        "등기부등본"
+      ],
+      "stabilizedAt": null,
+      "version": "0.10.3",
+      "hasPublishedPost": false,
+      "repoUrl": "https://github.com/dev-chlee/cpatools-toolbox-public/tree/main/work/skill-registry-mortgage-analysis"
+    },
+    {
+      "slug": "skill-revenue-tod",
+      "categoryDir": "work",
+      "subpath": "skill-revenue-tod",
+      "title": "매출테스트 자동화",
+      "description": "매출 Test of Details (TOD) 감사 절차를 수행하는 스킬.",
+      "category": "audit",
+      "tags": [
+        "감사",
+        "매출",
+        "TOD",
+        "증빙"
+      ],
+      "stabilizedAt": null,
+      "version": "0.6.2",
+      "hasPublishedPost": false,
+      "repoUrl": "https://github.com/dev-chlee/cpatools-toolbox-public/tree/main/work/skill-revenue-tod"
+    }
+  ]
+}

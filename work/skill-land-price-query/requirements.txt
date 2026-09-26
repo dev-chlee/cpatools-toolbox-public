@@ -1,0 +1,4 @@
+# 기본 설치: API 조회 + 이미지 없는 엑셀
+openpyxl>=3.1     # 감사 워크페이퍼(xlsx)
+# 조회 데이터는 표준 라이브러리(urllib)만 사용.
+# 이미지 삽입: requirements-images.txt / 자동 캡처: requirements-capture.txt

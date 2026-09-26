@@ -1,0 +1,2 @@
+# revenue-tod dependencies
+openpyxl>=3.1
